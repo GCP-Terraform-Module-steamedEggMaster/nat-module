@@ -39,7 +39,7 @@ module "router" {
   source = "git::https://github.com/GCP-Terraform-Module-steamedEggMaster/router-module.git?ref=v1.0.0"
 
   name    = "test-router"
-  network = module.vpc_network.self_link
+  network = module.vpc.self_link
   region  = "asia-northeast3"
 }
 
@@ -79,7 +79,9 @@ module "nat" {
     {
       name                     = module.subnet2.name
       source_ip_ranges_to_nat  = "PRIMARY_IP_RANGE"                      # 기본 IP 범위만 NAT 적용
-      secondary_ip_range_names = module.subnet2.secondary_ip_range_names # 특정 보조 IP 허용
+      secondary_ip_range_names = [
+        for range in module.subnet2.secondary_ip_ranges : range.range_name
+      ]
     }
   ]
 
