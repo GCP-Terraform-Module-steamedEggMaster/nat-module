@@ -96,8 +96,8 @@ output "auto_network_tier" {
 output "log_config" {
   description = "NAT 로그 설정"
   value = {
-    enable = google_compute_router_nat.nat.log_config[0].enable
-    filter = google_compute_router_nat.nat.log_config[0].filter
+    enable = try(google_compute_router_nat.nat.log_config[0].enable, false) # 기본값으로 false 반환
+    filter = try(google_compute_router_nat.nat.log_config[0].filter, "NONE") # 기본값으로 NONE 반환
   }
 }
 
