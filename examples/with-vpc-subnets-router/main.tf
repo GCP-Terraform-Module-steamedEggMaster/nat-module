@@ -17,7 +17,7 @@ module "subnet1" {
 module "subnet2" {
   source = "git::https://github.com/GCP-Terraform-Module-steamedEggMaster/subnets-module.git?ref=v1.0.0"
 
-  name          = "test-subnet1"
+  name          = "test-subnet2"
   network       = module.vpc.id
   ip_cidr_range = "10.0.1.0/24"
   region        = "asia-northeast3"
