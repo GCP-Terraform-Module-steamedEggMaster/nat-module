@@ -3,11 +3,6 @@ output "name" {
   value       = google_compute_router_nat.nat.name
 }
 
-output "self_link" {
-  description = "생성된 NAT 서비스의 고유 URI"
-  value       = google_compute_router_nat.nat.self_link
-}
-
 output "id" {
   description = "생성된 NAT 리소스의 고유 식별자"
   value       = google_compute_router_nat.nat.id

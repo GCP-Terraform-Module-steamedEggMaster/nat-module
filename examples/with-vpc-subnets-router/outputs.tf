@@ -48,7 +48,6 @@ output "nat_details" {
   value = {
     id                                  = module.nat.id                                  # NAT 리소스의 고유 식별자
     name                                = module.nat.name                                # NAT 서비스 이름
-    self_link                           = module.nat.self_link                           # NAT 서비스의 고유 URI
     region                              = module.nat.region                              # NAT 리소스가 생성된 리전
     project                             = module.nat.project                             # NAT 리소스가 속한 프로젝트 ID
     router                              = module.nat.router                              # NAT가 연결된 Cloud Router 이름
