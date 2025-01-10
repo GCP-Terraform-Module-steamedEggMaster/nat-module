@@ -32,7 +32,7 @@ jobs:
     - name: Initialize Go Module
       run: |
         cd test
-        go mod init github.com/test/address-module
+        go mod init github.com/test/nat-module
         go mod tidy
 
     - name: Run Terraform Tests
