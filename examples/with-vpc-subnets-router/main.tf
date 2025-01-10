@@ -80,7 +80,7 @@ module "nat" {
     },
     {
       name                    = module.subnet2.name
-      source_ip_ranges_to_nat = ["PRIMARY_IP_RANGE"] # 기본 IP 범위만 NAT 적용
+      source_ip_ranges_to_nat = ["LIST_OF_SECONDARY_IP_RANGES"] # 보조 IP 범위만 NAT 적용
       secondary_ip_range_names = [
         for range in module.subnet2.secondary_ip_ranges : range.range_name
       ]
