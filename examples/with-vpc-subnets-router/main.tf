@@ -73,12 +73,12 @@ module "nat" {
   subnetworks = [
     {
       name                     = module.subnet1.name
-      source_ip_ranges_to_nat  = "ALL_IP_RANGES" # 서브넷 내 모든 IP NAT 적용
-      secondary_ip_range_names = []              # 보조 IP 없음
+      source_ip_ranges_to_nat  = ["ALL_IP_RANGES"] # 서브넷 내 모든 IP NAT 적용
+      secondary_ip_range_names = []                # 보조 IP 없음
     },
     {
-      name                     = module.subnet2.name
-      source_ip_ranges_to_nat  = "PRIMARY_IP_RANGE"                      # 기본 IP 범위만 NAT 적용
+      name                    = module.subnet2.name
+      source_ip_ranges_to_nat = ["PRIMARY_IP_RANGE"] # 기본 IP 범위만 NAT 적용
       secondary_ip_range_names = [
         for range in module.subnet2.secondary_ip_ranges : range.range_name
       ]

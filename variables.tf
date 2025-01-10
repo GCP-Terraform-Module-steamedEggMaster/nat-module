@@ -126,7 +126,7 @@ variable "subnetworks" {
   description = "NAT에 연결할 서브네트워크 구성"
   type = list(object({
     name                     = string
-    source_ip_ranges_to_nat  = string
+    source_ip_ranges_to_nat  = list(string)
     secondary_ip_range_names = list(string)
   }))
   default = []
