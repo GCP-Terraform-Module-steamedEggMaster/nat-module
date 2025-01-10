@@ -61,8 +61,10 @@ module "nat" {
   # 필수 변수
   name                               = "test-nat"
   router                             = module.router.name
+  region                             = "asia-northeast3"
   source_subnetwork_ip_ranges_to_nat = "LIST_OF_SUBNETWORKS" # 특정 서브네트워크만 NAT 적용
   nat_ip_allocate_option             = "MANUAL_ONLY"         # 외부 IP 수동 설정
+
 
   # 수동 NAT IP 설정
   nat_ips = [
