@@ -121,40 +121,37 @@ variable "project" {
   default     = null
 }
 
-# 서브네트워크 설정
 variable "subnetworks" {
   description = "NAT에 연결할 서브네트워크 구성"
   type = list(object({
-    name                     = string
-    source_ip_ranges_to_nat  = list(string)
-    secondary_ip_range_names = list(string)
+    name                     = optional(string, null)
+    source_ip_ranges_to_nat  = optional(list(string), null)
+    secondary_ip_range_names = optional(list(string), null)
   }))
   default = []
 }
 
-# 로그 설정
 variable "log_config" {
   description = "NAT 로그 설정"
   type = object({
-    enable = bool
-    filter = string
+    enable = optional(bool, null)
+    filter = optional(string, null)
   })
   default = null
 }
 
-# 규칙 설정
 variable "rules" {
   description = "NAT 규칙 설정"
   type = list(object({
-    rule_number = number
-    description = string
-    match       = string
-    action = object({
-      source_nat_active_ips    = list(string)
-      source_nat_drain_ips     = list(string)
-      source_nat_active_ranges = list(string)
-      source_nat_drain_ranges  = list(string)
-    })
+    rule_number = optional(number, null)
+    description = optional(string, null)
+    match       = optional(string, null)
+    action = optional(object({
+      source_nat_active_ips    = optional(list(string), null)
+      source_nat_drain_ips     = optional(list(string), null)
+      source_nat_active_ranges = optional(list(string), null)
+      source_nat_drain_ranges  = optional(list(string), null)
+    }), null)
   }))
   default = []
 }
